@@ -1,9 +1,22 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  StatusBar,
+} from "react-native";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 
 export default function App() {
+  const randomQuote = () => {
+    fetch("https://api.quotable.io/random")
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+      });
+  };
+
   return (
     <View
       style={{
@@ -13,6 +26,7 @@ export default function App() {
         backgroundColor: "#5372F0",
       }}
     >
+      <StatusBar barstyle="light-content" />
       <View
         style={{
           width: "90%",
@@ -68,7 +82,7 @@ export default function App() {
           -- Author Name
         </Text>
         <TouchableOpacity
-          onPress={() => {}}
+          onPress={randomQuote}
           style={{
             backgroundColor: "#5372f0",
             padding: 20,
@@ -86,7 +100,9 @@ export default function App() {
         </TouchableOpacity>
         <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
           <TouchableOpacity
-            onPress={() => {}}
+            onPress={() => {
+              Rand;
+            }}
             style={{
               borderWidth: 2,
               borderColor: "#5372F0",
