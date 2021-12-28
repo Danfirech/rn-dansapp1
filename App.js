@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+
 import {
   StyleSheet,
   Text,
@@ -9,11 +11,16 @@ import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 
 export default function App() {
+  const [Quote, setQuote] = useState();
+  const [Author, setAuthor] = useState();
+
   const randomQuote = () => {
     fetch("https://api.quotable.io/random")
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
+        console.log(result.content);
+        setQuote(result.content);
+        setAuthor(result.author);
       });
   };
 
@@ -62,7 +69,7 @@ export default function App() {
             paddingHorizontal: 30,
           }}
         >
-          The Quote of the day is as follows: It is what it is until it is not.
+          {Quote}
         </Text>
         <FontAwesome5
           name="quote-right"
@@ -79,7 +86,7 @@ export default function App() {
             marginVertical: 15,
           }}
         >
-          -- Author Name
+          {Author}
         </Text>
         <TouchableOpacity
           onPress={randomQuote}
